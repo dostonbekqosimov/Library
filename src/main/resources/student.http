@@ -1,0 +1,20 @@
+###
+POST localhost:8080/students
+Contnent-Type: application/json
+
+{
+    "name": "Tom",
+    "surname": "Cruise",
+    "phone": "123456789"
+
+}
+
+###
+GET localhost:8080/students
+Content-Type: application/json
+
+###
+GET localhost:8080/students/1
+Content-Type: application/json
+
+###

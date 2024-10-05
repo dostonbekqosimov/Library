@@ -1,0 +1,35 @@
+###
+POST localhost:8080/books
+Content-Type: application/json
+
+{
+    "title": "Atomic Habits",
+    "author": "James Clear",
+    "publishedDate": "2018-08-01"
+}
+
+
+###
+GET localhost:8080/books
+Content-Type: application/json
+
+
+###
+GET localhost:8081/student_book/book/1
+Content-Type: application/json
+
+
+###
+PUT localhost:8081/books/book/1
+Content-Type: application/json
+
+{
+    "title": "Lords of the Rings",
+    "author": "J.D. Salinger",
+    "publishedDate": "1951-07-16"
+}
+
+
+###
+DELETE localhost:8080/books/1
+Content-Type: application/json

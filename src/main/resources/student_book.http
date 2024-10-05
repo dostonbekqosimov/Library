@@ -1,0 +1,15 @@
+###
+POST localhost:8080/student_book/student/2/book/2
+Content-Type: application/json
+
+###
+GET localhost:8080/student_book/student/1
+Content-Type: application/json
+###
+
+PUT localhost:8080/student_book/student/1/book/2
+Content-Type: application/json
+
+###
+DELETE localhost:8080/student_book/student/1/book/2
+Content-Type: application/json
