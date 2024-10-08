@@ -4,6 +4,7 @@ package code.doston.controller;
 import code.doston.entity.Book;
 import code.doston.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,39 +17,34 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping
-    public String addBook(@RequestBody Book book) {
-        boolean created = bookService.createBook(book);
+    public ResponseEntity<?> addBook(@RequestBody Book book) {
+        return ResponseEntity.status(201).body(bookService.createBook(book));
 
-        if (!created) {
-            return "Book already exists";
-        }
-        return "Book successfully added";
     }
 
     @GetMapping
-    public List<Book> getAllBooks(){
+    public ResponseEntity<List<Book>> getAllBooks() {
 
-        return bookService.getAll();
+        return ResponseEntity.ok().body(bookService.getAll());
     }
 
     @GetMapping("/book/{id}")
-    public Book getBookById(@PathVariable("id") Long id){
+    public ResponseEntity<?> getBookById(@PathVariable("id") Long id) {
 
-        return bookService.getBookById(id);
+        return ResponseEntity.ok().body(bookService.getBookById(id));
     }
 
     @PutMapping("/book/{id}")
-    public String updateBookById(@PathVariable("id") Long id,
-                                 @RequestBody Book book){
+    public ResponseEntity<?> updateBookById(@PathVariable("id") Long id,
+                                            @RequestBody Book book) {
 
-        bookService.updateBookById(id, book);
-        return "Book successfully updated";
+
+        return ResponseEntity.ok().body(bookService.updateBookById(id, book));
     }
 
     @DeleteMapping("/book/{id}")
-    public String deleteBookById(@PathVariable("id") Long id){
-
-        bookService.deleteBookById(id);
-        return "Book successfully deleted";
+    public ResponseEntity<?> deleteBookById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok().body(bookService.deleteBookById(id)
+        );
     }
 }

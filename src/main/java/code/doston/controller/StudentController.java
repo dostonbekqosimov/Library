@@ -3,7 +3,9 @@ package code.doston.controller;
 
 import code.doston.entity.Student;
 import code.doston.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,36 +18,31 @@ public class StudentController {
     private StudentService studentService;
 
     @PostMapping
-    public String addStudent(@RequestBody Student student) {
+    public ResponseEntity<?> addStudent(@Valid @RequestBody Student student) {
 
-        boolean created = studentService.createStudent(student);
-        if (!created) {
-            return "Student already exists";
-        }
-        return "Student successfully added";
+        return ResponseEntity.ok().body(studentService.createStudent(student));
     }
 
     @GetMapping
-    public List<Student> getAllStudents(){
+    public ResponseEntity<List<Student>> getAllStudents() {
 
-        return studentService.getAll();
+        return ResponseEntity.ok().body(studentService.getAll());
     }
 
     @GetMapping("/{id}")
-    public Student getStudentById(@PathVariable("id") Long id){
-        return studentService.getStudentById(id);
+    public ResponseEntity<?> getStudentById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok().body(studentService.getStudentById(id));
     }
 
     @DeleteMapping("/{id}")
-    public String deleteStudentById(@PathVariable("id") Long id){
-        studentService.deleteStudentById(id);
-        return "Student successfully deleted";
+    public ResponseEntity<?> deleteStudentById(@PathVariable("id") Long id) {
+        return ResponseEntity.ok().body(studentService.deleteStudentById(id));
     }
 
     @PutMapping("/{id}")
-    public String updateStudentById(@PathVariable("id") Long id, @RequestBody Student student){
-        studentService.updateStudentById(id, student);
-        return "Student successfully updated";
+    public ResponseEntity<?> updateStudentById(@PathVariable("id") Long id, @RequestBody Student student) {
+        return ResponseEntity.ok().body(studentService.updateStudentById(id, student));
+
     }
 
 }

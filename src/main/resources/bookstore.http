@@ -3,7 +3,7 @@ POST localhost:8080/books
 Content-Type: application/json
 
 {
-    "title": "Atomic Habits",
+    "title": "Good people",
     "author": "James Clear",
     "publishedDate": "2018-08-01"
 }

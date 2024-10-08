@@ -1,5 +1,5 @@
 ###
-POST localhost:8080/student_book/student/2/book/2
+POST localhost:8080/student_book/student/1/book/1
 Content-Type: application/json
 
 ###
